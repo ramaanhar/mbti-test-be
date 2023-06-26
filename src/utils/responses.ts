@@ -31,10 +31,24 @@ export const BadRequestResponse = (res: Response, err: any): Response => {
   })
 }
 
-export const ValidationErrorRequest = (res: Response, err: any, message?: string): Response => {
+export const ValidationErrorResponse = (res: Response, err: any, message?: string): Response => {
   return res.status(400).json({
     status: 'error',
     message: message ?? err.message
+  })
+}
+
+export const UnauthorizedResponse = (res: Response, message?: string): Response => {
+  return res.status(401).json({
+    status: 'error',
+    message: message ?? 'Unauthorized'
+  })
+}
+
+export const ForbiddenResponse = (res: Response, message?: string): Response => {
+  return res.status(403).json({
+    status: 'error',
+    message: message ?? 'Forbidden'
   })
 }
 // all messages

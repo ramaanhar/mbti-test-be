@@ -5,7 +5,7 @@ import {
   NotFoundResponse,
   SuccessfulCreateResponse,
   SuccessfulResponse,
-  ValidationErrorRequest
+  ValidationErrorResponse
 } from '../../utils/responses'
 import { generateToken, isPasswordCorrect } from '../../utils/auth'
 import { LoginInput } from '../../interfaces/loginInput.interface'
@@ -20,7 +20,7 @@ class AuthController {
       return SuccessfulCreateResponse(res, 'Berhasil membuat user baru!', user)
     } catch (err: any) {
       if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === 'P2002') {
-        return ValidationErrorRequest(res, err, 'Email yang Anda masukkan telah terdaftar sebelumnya.')
+        return ValidationErrorResponse(res, err, 'Email yang Anda masukkan telah terdaftar sebelumnya.')
       }
       return BadRequestResponse(res, err)
     }
