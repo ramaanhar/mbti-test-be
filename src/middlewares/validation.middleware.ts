@@ -8,7 +8,7 @@ const validationMiddleware = (schema: joi.Schema) => {
     if (!error) next()
     else {
       const { details } = error
-      ValidationErrorRequest(res, null, details[0].message)
+      ValidationErrorRequest(res, null, details[0].message) // should return error if has validation error
     }
   }
 }

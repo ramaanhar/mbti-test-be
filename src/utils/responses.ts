@@ -3,7 +3,7 @@ import { Response } from 'express'
 export const SuccessfulCreateResponse = (res: Response, message?: string, data?: any): Response => {
   return res.status(201).json({
     status: 'ok',
-    message: message ?? 'Success',
+    message: message ?? 'Successfully created!',
     data
   })
 }
@@ -11,7 +11,7 @@ export const SuccessfulCreateResponse = (res: Response, message?: string, data?:
 export const SuccessfulResponse = (res: Response, message?: string, data?: any): Response => {
   return res.status(200).json({
     status: 'ok',
-    message: message ?? 'Successfully created!',
+    message: message ?? 'Success',
     data
   })
 }
@@ -37,3 +37,5 @@ export const ValidationErrorRequest = (res: Response, err: any, message?: string
     message: message ?? err.message
   })
 }
+// all messages
+// should return custom message if message is exist, and should return "Success" message if message is not exist
